@@ -17,6 +17,18 @@
             </div>
 
             <div class="mb-3">
+                <label for="tenant_id" class="form-label">Tenant <span class="text-danger">*</span></label>
+                <select class="form-select" id="tenant_id" name="tenant_id" required>
+                    <option value="">Pilih Tenant</option>
+                    <?php if (isset($tenants) && is_array($tenants)): ?>
+                        <?php foreach ($tenants as $tenant): ?>
+                            <option value="<?= $tenant['id'] ?>" <?= old('tenant_id') == $tenant['id'] ? 'selected' : '' ?>><?= esc($tenant['name']) ?></option>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </select>
+            </div>
+
+            <div class="mb-3">
                 <label for="name" class="form-label">Nama Device <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="name" name="name" 
                        value="<?= old('name') ?>" required>

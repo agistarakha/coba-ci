@@ -11,7 +11,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6 mb-4">
+            <div class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Device Types</h5>
@@ -20,12 +20,21 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 mb-4">
+            <div class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Devices</h5>
                         <p class="card-text">Kelola devices dengan relasi ke device types.</p>
                         <a href="<?= base_url('devices') ?>" class="btn btn-primary">Kelola Devices</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tenants</h5>
+                        <p class="card-text">Kelola tenants untuk mengelompokkan devices per organisasi atau pelanggan.</p>
+                        <a href="<?= base_url('tenants') ?>" class="btn btn-primary">Kelola Tenants</a>
                     </div>
                 </div>
             </div>

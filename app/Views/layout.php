@@ -23,6 +23,9 @@
                         <a class="nav-link" href="<?= base_url('devices') ?>">Devices</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('tenants') ?>">Tenants</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('netbox/devices') ?>">Netbox Devices</a>
                     </li>
                 </ul>

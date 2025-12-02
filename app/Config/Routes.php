@@ -32,6 +32,17 @@ $routes->group('devices', function($routes) {
     $routes->get('(:num)/delete', 'DeviceController::delete/$1');
 });
 
+// Tenants Routes
+$routes->group('tenants', function($routes) {
+    $routes->get('/', 'TenantController::index');
+    $routes->get('new', 'TenantController::new');
+    $routes->post('create', 'TenantController::create');
+    $routes->get('(:num)', 'TenantController::show/$1');
+    $routes->get('(:num)/edit', 'TenantController::edit/$1');
+    $routes->post('(:num)/update', 'TenantController::update/$1');
+    $routes->get('(:num)/delete', 'TenantController::delete/$1');
+});
+
 $routes->group('api', ['namespace' => 'App\Controllers\Api'], function($routes) {
     // Device Types API
     $routes->get('device-types', 'DeviceTypeApiController::index');

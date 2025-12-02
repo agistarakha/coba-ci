@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\DeviceModel;
 use App\Models\DeviceTypeModel;
+use App\Models\TenantModel;
 use CodeIgniter\RESTful\ResourceController;
 
 class DeviceController extends ResourceController
@@ -30,9 +31,11 @@ class DeviceController extends ResourceController
     public function new()
     {
         $deviceTypeModel = new DeviceTypeModel();
+        $tenantModel = new TenantModel();
         $data = [
             'title' => 'Tambah Device',
             'deviceTypes' => $deviceTypeModel->findAll(),
+            'tenants' => $tenantModel->findAll(),
         ];
         return view('devices/create', $data);
     }
@@ -46,6 +49,7 @@ class DeviceController extends ResourceController
         
         $data = [
             'device_type_id' => $this->request->getPost('device_type_id'),
+            'tenant_id' => $this->request->getPost('tenant_id'),
             'name' => $this->request->getPost('name'),
             'specification' => $this->request->getPost('specification'),
             'status' => $this->request->getPost('status'),
@@ -93,10 +97,12 @@ class DeviceController extends ResourceController
         }
 
         $deviceTypeModel = new DeviceTypeModel();
+        $tenantModel = new TenantModel();
         $data = [
             'title' => 'Edit Device',
             'device' => $device,
             'deviceTypes' => $deviceTypeModel->findAll(),
+            'tenants' => $tenantModel->findAll(),
         ];
         return view('devices/edit', $data);
     }
@@ -115,6 +121,7 @@ class DeviceController extends ResourceController
 
         $data = [
             'device_type_id' => $this->request->getPost('device_type_id'),
+            'tenant_id' => $this->request->getPost('tenant_id'),
             'name' => $this->request->getPost('name'),
             'specification' => $this->request->getPost('specification'),
             'status' => $this->request->getPost('status'),

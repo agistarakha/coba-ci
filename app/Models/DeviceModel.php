@@ -12,7 +12,7 @@ class DeviceModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['device_type_id', 'name', 'specification', 'status'];
+    protected $allowedFields    = ['device_type_id', 'tenant_id', 'name', 'specification', 'status'];
 
     // Dates
     protected $useTimestamps = true;
@@ -23,6 +23,7 @@ class DeviceModel extends Model
     // Validation
     protected $validationRules      = [
         'device_type_id' => 'required|integer',
+        'tenant_id' => 'required|integer',
         'name' => 'required|min_length[3]|max_length[100]',
         'status' => 'required|in_list[active,inactive,maintenance]',
     ];
@@ -60,8 +61,9 @@ class DeviceModel extends Model
      */
     public function getAllWithType()
     {
-        return $this->select('devices.*, device_types.name as device_type_name')
+        return $this->select('devices.*, device_types.name as device_type_name, tenants.name as tenant_name')
                     ->join('device_types', 'device_types.id = devices.device_type_id')
+                    ->join('tenants', 'tenants.id = devices.tenant_id', 'left')
                     ->findAll();
     }
 
@@ -70,8 +72,9 @@ class DeviceModel extends Model
      */
     public function getWithType($id)
     {
-        return $this->select('devices.*, device_types.name as device_type_name')
+        return $this->select('devices.*, device_types.name as device_type_name, tenants.name as tenant_name')
                     ->join('device_types', 'device_types.id = devices.device_type_id')
+                    ->join('tenants', 'tenants.id = devices.tenant_id', 'left')
                     ->find($id);
     }
 }
