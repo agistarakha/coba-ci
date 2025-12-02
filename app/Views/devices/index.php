@@ -13,6 +13,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Device Type</th>
+                    <th>Tenant</th>
                     <th>Nama Device</th>
                     <th>Spesifikasi</th>
                     <th>Status</th>
@@ -22,13 +23,14 @@
             <tbody>
                 <?php if (empty($devices)): ?>
                     <tr>
-                        <td colspan="6" class="text-center">Tidak ada data</td>
+                        <td colspan="7" class="text-center">Tidak ada data</td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ($devices as $device): ?>
                         <tr>
                             <td><?= $device['id'] ?></td>
                             <td><?= esc($device['device_type_name']) ?></td>
+                            <td><?= esc($device['tenant_name'] ?? '-') ?></td>
                             <td><?= esc($device['name']) ?></td>
                             <td><?= esc($device['specification']) ?></td>
                             <td>

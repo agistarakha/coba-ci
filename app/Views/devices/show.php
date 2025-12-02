@@ -17,6 +17,9 @@
                     <dt class="col-sm-3">Device Type</dt>
                     <dd class="col-sm-9"><?= esc($device['device_type_name']) ?></dd>
 
+                    <dt class="col-sm-3">Tenant</dt>
+                    <dd class="col-sm-9"><?= esc($device['tenant_name'] ?? '-') ?></dd>
+
                     <dt class="col-sm-3">Nama Device</dt>
                     <dd class="col-sm-9"><?= esc($device['name']) ?></dd>
 
